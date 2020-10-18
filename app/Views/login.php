@@ -1,8 +1,10 @@
+<?= \Config\Services::validation()->listErrors(); ?>
+
 <?php if (session()->get('success')) : ?>
   <?= session()->get('success') ?>
 <?php endif; ?>
 
-<form class="" action="/" method="post">
+<form class="" action="/login" method="post">
   <label for="email">Email address</label>
   <input type="text" name="email" id="email" value="<?= set_value('email') ?>"><br>
 
