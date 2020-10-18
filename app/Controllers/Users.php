@@ -9,12 +9,11 @@ class Users extends BaseController
 	public function login()
 	{
 		$data = [];
-
+		
 		$data['title'] = 'login';
 		helper(['form']);
 
 		if ($this->request->getMethod() === 'post') {
-
 			$rules = [
 				'email'  => 'required|min_length[5]|max_length[255]|valid_email',
 				'password'  => 'required|min_length[8]|max_length[255]|validateUser[email,password]',
@@ -100,10 +99,6 @@ class Users extends BaseController
 
 		$data = [];
 		$data['title'] = 'profile';
-
-		if (!session()->get('isLoggedIn')) {
-			return redirect()->to('login');
-		}
 
 		helper(['form']);
 		$model = new UserModel();

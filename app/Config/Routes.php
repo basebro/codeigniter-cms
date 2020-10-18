@@ -36,7 +36,11 @@ $routes->match(['get', 'post'], 'register', 'Users::register');
 $routes->match(['get','post'],'profile', 'Users::profile');
 $routes->get('logout', 'Users::logout');
 
-
+$routes->match(['get', 'post'], 'news/update/(:segment)', 'News::update/$1');
+$routes->match(['get', 'post'], 'news/delete/(:segment)', 'News::delete/$1');
+$routes->match(['get', 'post'], 'news/create', 'News::create');
+$routes->get('news/(:segment)', 'News::view/$1');
+$routes->get('news', 'News::index');
 
 /**
  * --------------------------------------------------------------------
