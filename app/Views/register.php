@@ -1,4 +1,5 @@
 <?= \Config\Services::validation()->listErrors(); ?>
+
 <form class="" action="/register" method="post">
 
   <label for="name"> Name</label>
