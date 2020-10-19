@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\NewsModel;
 
-class Dashboard extends BaseController
+class PrivateArticles extends BaseController
 {
 	public function index()
 	{
@@ -17,11 +17,10 @@ class Dashboard extends BaseController
 		];
 
 		echo view('templates/header', $data);
-		echo view('news/overview', $data);
+		echo view('private/list', $data);
 		echo view('templates/footer');
-	}
-
-	
+    }
+    	
     public function view($slug = NULL)
     {
         $model = new NewsModel();
@@ -36,7 +35,7 @@ class Dashboard extends BaseController
         $data['created_at'] = $data['news']['created_at'];
 
         echo view('templates/header', $data);
-        echo view('news/single-view', $data);
+        echo view('private/article', $data);
         echo view('templates/footer', $data);
     }
 
@@ -62,7 +61,7 @@ class Dashboard extends BaseController
             return redirect()->route('dashboard');
         } else {
             echo view('templates/header', ['title' => 'Create a new article']);
-            echo view('news/create');
+            echo view('private/create-article');
             echo view('templates/footer');
         }
     }
@@ -97,8 +96,8 @@ class Dashboard extends BaseController
 
             return redirect()->route('dashboard');
         } else {
-            echo view('templates/header', ['title' => 'Update article' . $id]);
-            echo view('news/update', $data);
+            echo view('templates/header', ['title' => 'Update article ' . $id]);
+            echo view('private/update-article', $data);
             echo view('templates/footer');
         }
     }
@@ -121,8 +120,8 @@ class Dashboard extends BaseController
 
             return redirect()->route('dashboard');
         } else {
-            echo view('templates/header', ['title' => 'Delete article' . $id]);
-            echo view('news/delete', $data);
+            echo view('templates/header', ['title' => 'Delete article ' . $id]);
+            echo view('private/delete-article', $data);
             echo view('templates/footer');
         }
     }

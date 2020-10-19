@@ -1,5 +1,5 @@
 <?= \Config\Services::validation()->listErrors(); ?>
-
+<br>
 <form class="" action="/dashboard/users/create" method="post">
 
   <label for="name"> Name</label>
@@ -18,10 +18,9 @@
   <input type="password" name="password_confirm" id="password_confirm" value=""> <br>
 
   <label for="roles">Roles</label>
-  <input type="roles" name="roles[]" id="roles" value="" placeholder="ROLE_ADMIN, ROLE_USER"> <br>
+  <input type="roles" name="roles[]" id="roles" value="" placeholder="Example: ROLE_ADMIN"> <br>
 
-
+<br>
   <button type="submit">Create</button> <br>
-
 
 </form>

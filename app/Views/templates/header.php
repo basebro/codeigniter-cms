@@ -8,17 +8,19 @@
 <body>
     <h1><?= esc($title); ?></h1>
     <?php if (session()->get('isLoggedIn')) : ?>
-        <a href="/logout">
-            Logout
+        <a href="/dashboard">
+            Articles
         </a> |
         <a href="/dashboard/profile">
             Profile
-        </a>
+        </a> |
         <?php if (session()->get('roles') == json_encode(['ROLE_ADMIN'])) : ?>
-            |
             <a href="/dashboard/users/show">
                 Manage Users
-            </a> <br> <br>
+            </a> |
         <?php endif; ?>
+        <a href="/logout">
+            Logout
+        </a>
+        <br>
     <?php endif; ?>
-    <br><br>

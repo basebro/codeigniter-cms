@@ -1,5 +1,7 @@
 <?php if (session()->get('success')) : ?>
+    <br>
     *<?= session()->get('success') ?>*
+    <br>
 <?php endif; ?>
 <br><br>
 <?php if (!empty($users) && is_array($users)) : ?>
@@ -10,6 +12,7 @@
             <th>Name</th>
             <th>Last_name</th>
             <th>Email</th>
+            <th>Roles</th>
             <th>Created_at</th>
             <th>Actions</th>
         </tr>
@@ -26,6 +29,9 @@
                 </td>
                 <td>
                     <p><?= esc($users_item['email']); ?></p>
+                </td>
+                <td>
+                    <p><?= esc($users_item['roles']); ?></p>
                 </td>
                 <td>
                     <p>Date: <?= esc($users_item['created_at']); ?></p>
@@ -47,7 +53,6 @@
     <p>Unable to find any user.</p>
 
 <?php endif ?>
-
 
 <a href="/dashboard/users/create">
     <button>Create User</button>
