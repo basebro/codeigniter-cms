@@ -2,7 +2,7 @@
 
 <?= \Config\Services::validation()->listErrors(); ?>
 
-<form action="/news/update/<?= esc($news['id']); ?>" method="post">
+<form action="/dashboard/update/<?= esc($news['id']); ?>" method="post">
     <?= csrf_field() ?>
 
     <label for="title">Title</label>
@@ -11,9 +11,6 @@
     <label for="body">Text</label>
     <textarea name="body" rows="4" cols="50"><?= esc($news['body']); ?></textarea>
     <br />
-    <label for="created_at">Date & Time</label>
-    <input type="datetime-local" name="created_at" value="<?= date("Y-m-dTH:i", strtotime(($news['created_at']))); ?>" /><br />
-    <!-- <input type="datetime-local" name="created_at" value="2017-06-01T08:30" /><br /> -->
 
     <label for="visibility">Visibility</label>
 
@@ -36,10 +33,10 @@
     </select>
     <br>
 
-    <input type="submit" name="submit" value="Update news item" />
+    <input type="submit" name="submit" value="Update news article" />
 
 </form>
 
-<a href="/news">
+<a href="/dashboard">
     <button>Back</button>
 </a>

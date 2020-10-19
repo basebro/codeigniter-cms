@@ -1,1 +1,0 @@
-<h1>Hello, <?= session()->get('name') ?></h1>
