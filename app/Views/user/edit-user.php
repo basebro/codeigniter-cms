@@ -1,9 +1,5 @@
 <?= \Config\Services::validation()->listErrors(); ?>
-
-<?php if (session()->get('success')) : ?>
-  *<?= session()->get('success') ?>*
-<?php endif; ?>
-
+<h2>Details</h2>
 <form class="" action="/dashboard/users/edit/<?= esc($user['id']); ?>" method="post">
 
   <label for="name"> Name</label>

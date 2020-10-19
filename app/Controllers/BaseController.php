@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 /**
@@ -43,4 +44,33 @@ class BaseController extends Controller
 		// $this->session = \Config\Services::session();
 	}
 
+	public function sendMail($to)
+	{
+		$email = \Config\Services::email();
+
+		$email->setTo($to);
+		$email->setFrom('christianacevedo.89@gmail.com', 'Confirm Registration');
+		$email->setSubject('Welcome');
+		$email->setMessage('Hello and welcome to our Platform');
+		if ($email->send()) {
+			echo 'Email successfully sent';
+		} else {
+			$data = $email->printDebugger(['headers']);
+			print_r($data);
+		}
+	}
+
+	protected function setUserSession($user)
+	{
+		$data = [
+			'id' => $user['id'],
+			'name' => $user['name'],
+			'last_name' => $user['last_name'],
+			'email' => $user['email'],
+			'isLoggedIn' => true,
+			'roles' => $user['roles'],
+		];
+		session()->set($data);
+		return true;
+	}
 }

@@ -1,7 +1,7 @@
 <?php if (session()->get('success')) : ?>
+<br>
     *<?= session()->get('success') ?>*
 <?php endif; ?>
-<br>
 <?php if (!empty($news) && is_array($news)) : ?>
 
     <?php foreach ($news as $news_item) : ?>

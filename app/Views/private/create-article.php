@@ -1,7 +1,6 @@
-<h2><?= esc($title); ?></h2>
-
 <?= \Config\Services::validation()->listErrors(); ?>
 
+<br>
 <form action="/dashboard/create" method="post">
     <?= csrf_field() ?>
 
@@ -31,13 +30,13 @@
         <option value="unpublished">
         unpublished</option>
     </select>
-    <br>
+    <br><br>
 
     <input type="submit" name="submit" value="Create news article" />
 
 </form>
 
-
+<br>
 <a href="/dashboard">
     <button>Back</button>
 </a>

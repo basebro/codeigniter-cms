@@ -1,7 +1,5 @@
-<h2><?= esc($title); ?></h2>
-
 <?= \Config\Services::validation()->listErrors(); ?>
-
+<br>
 <form action="/dashboard/update/<?= esc($news['id']); ?>" method="post">
     <?= csrf_field() ?>
 
@@ -31,12 +29,12 @@
         <option value="unpublished" <?php if ($news['status'] == 'unpublished') : ?> selected <?php endif ?>>
             unpublished</option>
     </select>
-    <br>
+    <br><br>
 
     <input type="submit" name="submit" value="Update news article" />
 
 </form>
-
+<br>
 <a href="/dashboard">
     <button>Back</button>
 </a>
