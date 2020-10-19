@@ -177,8 +177,8 @@ class Users extends BaseController
 		];
 
 		echo view('templates/header', $data);
-		echo view('user/show-users', $data);
-		echo view('templates/footer', $data);
+		echo view('user/show-users');
+		echo view('templates/footer' );
 	}
 
 	public function create()
@@ -297,7 +297,7 @@ class Users extends BaseController
 
 			return redirect()->route('dashboard/users/show');
 		} else {
-			echo view('templates/header', ['title' => 'Delete user' . $id]);
+			echo view('templates/header', $data);
 			echo view('user/delete-user', $data);
 			echo view('templates/footer');
 		}
