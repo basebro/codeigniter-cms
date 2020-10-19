@@ -1,13 +1,14 @@
 <h2><?= esc($title); ?></h2>
 
 <?= \Config\Services::validation()->listErrors(); ?>
-<p><?= esc($news['body']); ?></p>
+<p><?= esc($user['email']); ?></p>
 
-<form action="/dashboard/delete/<?= esc($news['id']); ?>" method="post">
+<form action="/dashboard/users/delete/<?= esc($user['id']); ?>" method="post">
     <?= csrf_field() ?>
     <input type="submit" name="submit" value="Really delete?" />
 
 </form>
-<a href="/dashboard">
+<br>
+<a href="/dashboard/users/show">
     <button>Back</button>
 </a>

@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class UserModel extends Model
 {
   protected $table = 'users';
-  protected $allowedFields = ['name', 'last_name', 'email', 'password', 'created_at', 'updated_at'];
+  protected $allowedFields = ['name', 'last_name', 'email', 'password', 'roles', 'created_at', 'updated_at'];
   protected $beforeInsert = ['beforeInsert'];
   protected $beforeUpdate = ['beforeUpdate'];
 
@@ -18,6 +18,7 @@ class UserModel extends Model
   {
     $data = $this->passwordHash($data);
     $data['data']['created_at'] = date('Y-m-d H:i:s');
+    $data['data']['roles'] = json_encode($data['data']['roles']);
 
     return $data;
   }
@@ -26,6 +27,8 @@ class UserModel extends Model
   {
     $data = $this->passwordHash($data);
     $data['data']['updated_at'] = date('Y-m-d H:i:s');
+    $data['data']['roles'] = json_encode($data['data']['roles']);
+
     return $data;
   }
 
@@ -35,5 +38,12 @@ class UserModel extends Model
       $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
 
     return $data;
+  }
+
+  public function getUserById($id)
+  {
+    return $this->asArray()
+      ->where(['id' => $id])
+      ->first();
   }
 }

@@ -1,6 +1,6 @@
 <?= \Config\Services::validation()->listErrors(); ?>
 
-<form class="" action="/register" method="post">
+<form class="" action="/dashboard/users/create" method="post">
 
   <label for="name"> Name</label>
   <input type="text" name="name" id="name" value="<?= set_value('name') ?>"> <br>
@@ -17,9 +17,11 @@
   <label for="password_confirm">Confirm Password</label>
   <input type="password" name="password_confirm" id="password_confirm" value=""> <br>
 
-  <input hidden type="roles" name="roles[]" id="roles" readonly > <br>
-  <button type="submit">Register</button> <br>
-<br>
-  <a href="/login">Already have an account</a>
+  <label for="roles">Roles</label>
+  <input type="roles" name="roles[]" id="roles" value="" placeholder="ROLE_ADMIN, ROLE_USER"> <br>
+
+
+  <button type="submit">Create</button> <br>
+
 
 </form>

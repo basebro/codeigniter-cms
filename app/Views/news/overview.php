@@ -1,7 +1,7 @@
 <?php if (session()->get('success')) : ?>
-    <?= session()->get('success') ?>
+    *<?= session()->get('success') ?>*
 <?php endif; ?>
-
+<br>
 <?php if (!empty($news) && is_array($news)) : ?>
 
     <?php foreach ($news as $news_item) : ?>
@@ -13,16 +13,13 @@
             <p>Created date: <?= esc($news_item['created_at']); ?></p>
         </div>
         <p>
-            <a href="/news/<?= esc($news_item['slug'], 'url'); ?>">View</a>,
-            <a href="/news/update/<?= esc($news_item['id'], 'url'); ?>">Edit</a>
-            <a href="/news/delete/<?= esc($news_item['id'], 'url'); ?>">Delete</a>,
+            <a href="/dashboard/<?= esc($news_item['slug'], 'url'); ?>">View</a>,
+            <a href="/dashboard/update/<?= esc($news_item['id'], 'url'); ?>">Edit</a>
+            <a href="/dashboard/delete/<?= esc($news_item['id'], 'url'); ?>">Delete</a>,
         </p>
 
     <?php endforeach; ?>
 
-    <a href="/news/create">
-        <button>Create</button>
-    </a>
 <?php else : ?>
 
     <h3>No News</h3>
@@ -30,3 +27,7 @@
     <p>Unable to find any news for you.</p>
 
 <?php endif ?>
+
+<a href="/dashboard/create">
+    <button>Create</button>
+</a>

@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('News');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -31,16 +31,25 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->match(['get', 'post'], 'login', 'Users::login');
-$routes->match(['get', 'post'], 'register', 'Users::register');
-$routes->match(['get','post'],'profile', 'Users::profile');
+$routes->match(['get', 'post'], 'login', 'Users::login', ['filter' => 'noauth']);
+$routes->match(['get', 'post'], 'register', 'Users::register', ['filter' => 'noauth']);
+$routes->match(['get', 'post'], 'dashboard/profile', 'Users::profile', ['filter' => 'auth']);
 $routes->get('logout', 'Users::logout');
 
-$routes->match(['get', 'post'], 'news/update/(:segment)', 'News::update/$1');
-$routes->match(['get', 'post'], 'news/delete/(:segment)', 'News::delete/$1');
-$routes->match(['get', 'post'], 'news/create', 'News::create');
-$routes->get('news/(:segment)', 'News::view/$1');
-$routes->get('news', 'News::index');
+$routes->match(['get', 'post'], 'dashboard/update/(:segment)', 'Dashboard::update/$1', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'dashboard/delete/(:segment)', 'Dashboard::delete/$1', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'dashboard/create', 'Dashboard::create', ['filter' => 'auth']);
+$routes->get('dashboard', 'Dashboard::index', ['filter' => 'auth']);
+$routes->get('dashboard/(:segment)', 'Dashboard::view/$1', ['filter' => 'auth']);
+$routes->get('/', 'News::index');
+$routes->get('/(:segment)', 'News::view/$1');
+
+$routes->get('dashboard/users/show', 'Users::showUsers', ['filter' => 'roles']);
+$routes->match(['get', 'post'], 'dashboard/users/create', 'Users::create', ['filter' => 'roles']);
+$routes->match(['get', 'post'], 'dashboard/users/edit/(:segment)', 'Users::edit/$1', ['filter' => 'roles']);
+$routes->match(['get', 'post'], 'dashboard/users/delete/(:segment)', 'Users::delete/$1', ['filter' => 'auth']);
+
+
 
 /**
  * --------------------------------------------------------------------

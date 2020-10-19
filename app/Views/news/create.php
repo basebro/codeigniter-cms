@@ -2,7 +2,7 @@
 
 <?= \Config\Services::validation()->listErrors(); ?>
 
-<form action="/news/create" method="post">
+<form action="/dashboard/create" method="post">
     <?= csrf_field() ?>
 
     <label for="title">Title</label>
@@ -10,10 +10,6 @@
 
     <label for="body">Text</label>
     <textarea name="body" rows="4" cols="50"></textarea><br />
-
-    <label for="created_at">Date & Time</label>
-    <input type="datetime-local" name="created_at" /><br />
-
     
     <label for="visibility">Visibility</label>
 
@@ -37,6 +33,11 @@
     </select>
     <br>
 
-    <input type="submit" name="submit" value="Create news item" />
+    <input type="submit" name="submit" value="Create news article" />
 
 </form>
+
+
+<a href="/dashboard">
+    <button>Back</button>
+</a>
