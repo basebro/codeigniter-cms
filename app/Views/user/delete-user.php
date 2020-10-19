@@ -1,7 +1,10 @@
-<h2><?= esc($title); ?></h2>
-
 <?= \Config\Services::validation()->listErrors(); ?>
+
+<h2>Details</h2>
+<p><?= esc($user['name']); ?></p>
+<p><?= esc($user['last_name']); ?></p>
 <p><?= esc($user['email']); ?></p>
+<p><?= esc($user['roles']); ?></p>
 
 <form action="/dashboard/users/delete/<?= esc($user['id']); ?>" method="post">
     <?= csrf_field() ?>

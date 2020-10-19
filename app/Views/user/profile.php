@@ -1,10 +1,11 @@
 <?= \Config\Services::validation()->listErrors(); ?>
-<br><br>
+<h2>Details</h2>
 <?php if (session()->get('success')) : ?>
   *<?= session()->get('success') ?>*
+  <br>
 <?php endif; ?>
-<br><br>
-<form  action="/dashboard/profile" method="post">
+<br>
+<form action="/dashboard/profile" method="post">
 
   <label for="name"> Name</label>
   <input type="text" name="name" id="name" value="<?= set_value('name', $user['name']) ?>"> <br>
@@ -23,7 +24,7 @@
 
   <label for="roles">Roles</label>
   <input type="roles" name="roles[]" id="roles" readonly value="<?= set_value('roles', $user['roles']) ?>"> <br>
-<br>
+  <br>
   <button type="submit">Update</button> <br>
 
 
@@ -31,5 +32,5 @@
 <br>
 
 <a href="/dashboard">
-    <button>Back</button>
+  <button>Back</button>
 </a>
